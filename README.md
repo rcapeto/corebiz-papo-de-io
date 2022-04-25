@@ -23,7 +23,7 @@ Clone the project and access the folder.
 
 ```bash
 $ git clone https://github.com/rcapeto/corebiz-papo-io.git
-$ cd ia-recommendation
+$ cd corebiz-papo-io
 ```
 
 To start, follow the instructions:
@@ -34,7 +34,7 @@ $ vtex link
 
 ## 💻 Project
 
-- Create an IA Recommendation to search simillar products.
+- Create a Countdown
 
 ## 👨🏻‍💻 Devs
 - [Raphael Capeto](https://github.com/rcapeto)

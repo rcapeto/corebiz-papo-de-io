@@ -1,0 +1,28 @@
+{
+  "name": "ia-recommendation",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "sass": "sass --watch --no-source-map react/styles:react --style compressed"
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,graphql,gql}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "sass": "^1.50.1"
+  }
+}

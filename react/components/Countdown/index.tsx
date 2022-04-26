@@ -6,19 +6,25 @@ import { languages } from './utils';
 
 const Countdown: VTEXCustomComponent = () => {
    const active = true;
-   const finalDate = '2022-03-25T20:05:54.521Z';
+   const finalDate = '2022-04-27T20:05:54.521Z';
    const lang = 'pt-br';
    const backgroundColor = '#8257e5';
 
    if(!active) return null;
 
-   const { daysSTR, hoursSTR, minutesSTR, secondsSTR } = useTimer(finalDate);
+   const { daysSTR, hoursSTR, minutesSTR, secondsSTR, active: timerActive} = useTimer(finalDate);
    const currentlang = languages.find(item => item.lang == lang);
+
+   if(!timerActive) {
+      return(
+         <div className={styles.timeout}>Tempo esgotado 😔</div>
+      );
+   }
 
    return(
       <div className={styles['countdown--container']} style={{ backgroundColor }}>
          <div className={styles['top-content']}>
-            <h2>Ofertas Incríveis</h2>
+            <h2>Ofertas Incríveis, <span>aproveite!</span></h2>
             <p>
                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam iure pariatur 
                aspernatur ad autem sit unde aut molestiae, neque ratione labore ipsam recusandae 

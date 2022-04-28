@@ -8,6 +8,8 @@ export type Langs = {
    seconds: string;
 }
 
+export const langsOptions: AvailablesLangs[] = ['en-us', 'es-es', 'en-us'];
+
 export const languages: Langs[] = [
    {
       lang: 'pt-br',

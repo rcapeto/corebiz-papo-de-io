@@ -1,14 +1,13 @@
 import React from 'react';
 import { useTimer } from '../../hooks/useTimer';
+import { Props , schema, defaultProps } from './utils/schema'
 import styles from './styles.module.css';
 
 import { languages } from './utils';
 
-const Countdown: VTEXCustomComponent = () => {
-   const active = true;
-   const finalDate = '2022-04-27T20:05:54.521Z';
-   const lang = 'pt-br';
-   const backgroundColor = '#8257e5';
+const Countdown: VTEXCustomComponent<Props> = ({ 
+   active, backgroundColor, description, title, finalDate, lang
+}) => {
 
    if(!active) return null;
 
@@ -21,48 +20,52 @@ const Countdown: VTEXCustomComponent = () => {
       );
    }
 
+   const items = [
+      {
+         value: daysSTR,
+         label: currentlang?.days ?? 'Days'
+      },
+      {
+         value: hoursSTR,
+         label: currentlang?.hours ?? 'Hours'
+      },
+      {
+         value: minutesSTR,
+         label: currentlang?.minutes ?? 'Minutes'
+      },
+      {
+         value: secondsSTR,
+         label: currentlang?.seconds ?? 'Seconds'
+      }
+   ];
+
    return(
       <div className={styles['countdown--container']} style={{ backgroundColor }}>
          <div className={styles['top-content']}>
-            <h2>Ofertas Incríveis, <span>aproveite!</span></h2>
-            <p>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam iure pariatur 
-               aspernatur ad autem sit unde aut molestiae, neque ratione labore ipsam recusandae 
-               quod velit nisi consequatur earum cupiditate fuga!
-            </p>
+            <h2 
+               dangerouslySetInnerHTML={{ __html: title }}
+            />
+            <p>{description}</p>
          </div>
 
          <div className={styles['bottom-content']}>
-            <div className={styles['countdown--item']}>
-               <div className={styles.content}>
-                  <p>{daysSTR}</p>
-                  <h5>{currentlang?.days ?? 'Days'}</h5>
-               </div>
-               <span className={styles.separator}>:</span>
-            </div>
-            <div className={styles['countdown--item']}>
-               <div className={styles.content}>
-                  <p>{hoursSTR}</p>
-                  <h5>{currentlang?.hours ?? 'Hours'}</h5>
-               </div>
-               <span className={styles.separator}>:</span>
-            </div>
-            <div className={styles['countdown--item']}>
-               <div className={styles.content}>
-                  <p>{minutesSTR}</p>
-                  <h5>{currentlang?.minutes ?? 'Minutes'}</h5>
-               </div>
-               <span className={styles.separator}>:</span>
-            </div>
-            <div className={styles['countdown--item']}>
-               <div className={styles.content}>
-                  <p>{secondsSTR}</p>
-                  <h5>{currentlang?.seconds ?? 'Seconds'}</h5>
-               </div>
-            </div>
+            {
+               items.map((item, index) =>(
+                  <div className={styles['countdown--item']} key={String(index)}>
+                     <div className={styles.content}>
+                        <p>{item.value}</p>
+                        <h5>{item.label}</h5>
+                     </div>
+                     { index < items.length - 1 && <span className={styles.separator}>:</span>}
+                  </div>
+               ))
+            }
          </div>
       </div>
    );
 };
+
+Countdown.defaultProps = defaultProps;
+Countdown.schema = schema;
 
 export default Countdown;

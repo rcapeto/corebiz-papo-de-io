@@ -15,7 +15,7 @@ declare global {
   }
 }
 type SchemaType = 'array' | 'object' | 'string' | 'boolean' | 'number';
-type UiWidget = 'image-uploader' | 'textarea' | 'datetime';
+type UiWidget = 'image-uploader' | 'textarea' | 'datetime' | 'color';
 
 interface SchemaProperties {
   __editorItemTitle?: {
